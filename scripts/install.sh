@@ -1,6 +1,11 @@
 #!/bin/bash
 set -x
 
+#Variables
+#IP_HOST is the network setup in vagranfile
+IP_HOST=192.168.199.9
+
+
 #Node install fixed to 8.5
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
@@ -17,7 +22,11 @@ echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 
 #Start mongod even though this doesn't work
-mongod 
+#mongod 
 
 #Git Forms IO
 git clone https://github.com/formio/formio.git --depth=1
+
+#Config file in formio install
+sudo cp /vagrant/default.json  /home/vagrant/formio/config/default.json
+
