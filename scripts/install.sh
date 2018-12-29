@@ -29,4 +29,10 @@ git clone https://github.com/formio/formio.git --depth=1
 
 #Config file in formio install
 sudo cp /vagrant/default.json  /home/vagrant/formio/config/default.json
+sudo sed -i 's/IP_REPLACE/'"$IP_HOST"'/g' /home/vagrant/formio/config/default.json
+
+#Install npm in formio directory
+sudo npm install ./formio/ --unsafe-perm=true --allow-root
+#Create directory for mongo
+sudo mkdir -p /data/db
 
